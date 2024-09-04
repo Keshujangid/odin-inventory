@@ -1,72 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Fruit</title>
+    <title>
+        <%= mode==='edit' ? 'Edit Fruit' : 'Add New Fruit' %>
+    </title>
     <link rel="stylesheet" href="/form.css">
     <link rel="stylesheet" href="/header.css">
 </head>
+
 <body>
-    <%- include('partials/header') %>
+    <div class="container">
+        <%- include('partials/header') %>
 
-    <h1>Add a New Fruit</h1>
+            <h2>
+                <%= mode==='edit' ? 'Edit Fruit' : 'Add a New Fruit' %>
+            </h2>
 
-    <form action="/submit" method="POST" enctype="multipart/form-data">
-        <!-- Fruit Information -->
-        <div class="form-group">
-            <label for="name">Fruit Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
+            <form action="<%= mode === 'edit' ? `/update/${data.fruit.name}` : '/submit' %>" method="POST"
+                <% if (mode !== 'edit') { %>
+                    enctype="multipart/form-data">
+                    <%  } %> 
+                <!-- Fruit Information -->
+                <div class="form-group">
+                    <label for="name">Fruit Name:</label>
+                    <input type="text" id="name" name="name" value="<%= data.fruit?.name || '' %>" required>
+                </div>
 
-        <div class="form-group">
-            <label for="family">Family:</label>
-            <input type="text" id="family" name="family" required>
-        </div>
+                <div class="form-group">
+                    <label for="family">Family:</label>
+                    <input type="text" id="family" name="family" value="<%= data.fruit?.family || '' %>" required>
+                </div>
 
-        <div class="form-group">
-            <label for="order">Order:</label>
-            <input type="text" id="order" name="f_order" required>
-        </div>
+                <div class="form-group">
+                    <label for="order">Order:</label>
+                    <input type="text" id="order" name="f_order" value="<%= data.fruit?.f_order || '' %>" required>
+                </div>
 
-        <div class="form-group">
-            <label for="genus">Genus:</label>
-            <input type="text" id="genus" name="genus" required>
-        </div>
+                <div class="form-group">
+                    <label for="genus">Genus:</label>
+                    <input type="text" id="genus" name="genus" value="<%= data.fruit?.genus || '' %>" required>
+                </div>
+                <% if (mode==='new' ) { %>
+                    <div class="form-group">
+                        <label for="f_img">Image:</label>
+                        <input type="file" name="f_img" id="img" accept="image/*" required>
+                    </div>
+                <% } %>
 
-        <div class="form-group">
-            <label for="f_img">image</label>
-            <input type="file" name="f_img" id="img" accept="image/*" required>
-        </div>
-        <!-- Nutritional Information -->
-        <h2>Nutrition Facts</h2>
 
-        <div class="form-group">
-            <label for="calories">Calories:</label>
-            <input type="number" id="calories" name="calories" step="any" required>
-        </div>
+                <!-- Nutritional Information -->
+                <h2>Nutrition Facts</h2>
 
-        <div class="form-group">
-            <label for="fat">Fat (g):</label>
-            <input type="number" id="fat" name="fat" step="any" required>
-        </div>
+                        <div class="form-group">
+                            <label for="calories">Calories:</label>
+                            <input type="number" id="calories" name="calories"
+                                value="<%= data.nutrition?.calories || '' %>" step="any" required>
+                        </div>
 
-        <div class="form-group">
-            <label for="sugar">Sugar (g):</label>
-            <input type="number" id="sugar" name="sugar" step="any" required>
-        </div>
+                        <div class="form-group">
+                            <label for="fat">Fat (g):</label>
+                            <input type="number" id="fat" name="fat" value="<%= data.nutrition?.fat || '' %>" step="any"
+                                required>
+                        </div>
 
-        <div class="form-group">
-            <label for="carbohydrates">Carbohydrates (g):</label>
-            <input type="number" id="carbohydrates" name="carbohydrates" step="any" required>
-        </div>
+                        <div class="form-group">
+                            <label for="sugar">Sugar (g):</label>
+                            <input type="number" id="sugar" name="sugar" value="<%= data.nutrition?.sugar || '' %>"
+                                step="any" required>
+                        </div>
 
-        <div class="form-group">
-            <label for="protein">Protein (g):</label>
-            <input type="number" id="protein" name="protein" step="any" required>
-        </div>
+                        <div class="form-group">
+                            <label for="carbohydrates">Carbohydrates (g):</label>
+                            <input type="number" id="carbohydrates" name="carbohydrates"
+                                value="<%= data.nutrition?.carbohydrates || '' %>" step="any" required>
+                        </div>
 
-        <button type="submit">Add Fruit</button>
-    </form>
+                        <div class="form-group">
+                            <label for="protein">Protein (g):</label>
+                            <input type="number" id="protein" name="protein"
+                                value="<%= data.nutrition?.protein || '' %>" step="any" required>
+                        </div>
+
+                        <button type="submit">
+                            <%= mode==='edit' ? 'Update Fruit' : 'Add Fruit' %>
+                        </button>
+            </form>
+    </div>
 </body>
+
 </html>

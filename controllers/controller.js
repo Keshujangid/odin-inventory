@@ -48,7 +48,10 @@ async function details(req, res) {
 
 
 function showForm(req, res) {
-  res.render('form');
+  const mode = 'new';  // Default to 'new' mode for adding a fruit
+  const data = {};     // Default to an empty object for new fruit data
+
+  res.render('form', { data, mode });
 }
 
 function multerImageValidation(req, res, next) {
@@ -93,6 +96,39 @@ async function formData(req, res) {
 }
 
 
+async function updateFruit(req, res) {
+  const id = req.params.id;
+  const data = await query.getById(id);
+  
+  if (data) {
+    res.render('form', { data, mode: 'edit' });
+  } else {
+    res.status(404).render('error', { errors: [{ msg: 'Fruit not found.' }] });
+  }
+}
+
+async function postUpdate(req , res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render('error', { errors: errors.array() });
+    }
+    await query.updateFruit(req.params.id , req.body)
+  } catch (error) {
+    console.log('upload error', error);
+    res.status(500).render('error', { errors: [{ msg: 'An unexpected error occurred.' }] });
+  }
+  // console.log(req.body)
+  // console.log(req.params.id)
+  res.redirect(`/fruits/${req.params.id}`)
+  // res.end();
+}
+
+// async function deleteFruit(req , res) {
+//   const id = req.params.id;
+
+// }
+
 module.exports = {
   home,
   details,
@@ -100,5 +136,7 @@ module.exports = {
   formData,
   multerImageValidation,
   getAllFamily,
-  getFruitsByFamily
+  getFruitsByFamily,
+  updateFruit,
+  postUpdate
 }

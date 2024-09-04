@@ -11,4 +11,6 @@ usersRouter.get('/new', controller.showForm)
 usersRouter.post('/submit', upload.single('f_img'),controller.multerImageValidation, validateFruit, controller.formData)
 usersRouter.get('/family' , controller.getAllFamily)
 usersRouter.get('/family/:id', controller.getFruitsByFamily)
+usersRouter.get('/update/:id', controller.updateFruit)
+usersRouter.post('/update/:id', validateFruit,controller.postUpdate)
 module.exports = usersRouter;

@@ -49,6 +49,26 @@ async function storeInDb(obj, imgUrl) {
     }
 }
 
+async function updateFruit(name, data) {
+    console.log(name, data)
+
+    try {
+        await pool.query(
+            'UPDATE fruits SET name = $1, family = $2, f_order = $3, genus = $4 WHERE name = $5',
+            [data.name, data.family, data.f_order, data.genus, name]
+        );
+
+        await pool.query(
+            'UPDATE nutritions SET calories = $1, fat = $2, sugar = $3, carbohydrates = $4, protein = $5 WHERE name = $6',
+            [data.calories, data.fat, data.sugar, data.carbohydrates, data.protein, name]
+        );
+
+    } catch (error) {
+        throw error
+    }
+
+
+}
 
 
 async function getFruitsFamily() {
@@ -63,5 +83,6 @@ module.exports = {
     getById,
     getFruitsFamily,
     getByFamilyName,
-    storeInDb
+    storeInDb,
+    updateFruit
 }

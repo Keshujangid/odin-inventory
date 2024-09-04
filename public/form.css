@@ -5,8 +5,15 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     color: #333;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
 }
 
 /* Form container styling */
@@ -20,7 +27,7 @@ form {
 }
 
 /* Heading styling */
-h1, h2 {
+h2 {
     text-align: center;
     color: #4CAF50;
     margin-bottom: 20px;
