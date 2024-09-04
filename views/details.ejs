@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= fruitsDetail.fruit.name %> Details
+  </title>
+  <link rel="stylesheet" href="/details.css">
+  <link rel="stylesheet" href="/header.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <%- include('partials/header') %>
+
+    <h1>
+      <%= fruitsDetail.fruit.name %>
+    </h1>
+    <img src="<%= fruitsDetail.fruit.f_imgs %>" alt="<%= fruitsDetail.fruit.name %>">
+    <p>Family: <%= fruitsDetail.fruit.family %>
+    </p>
+    <p>Order: <%= fruitsDetail.fruit.f_order %>
+    </p>
+    <p>Genus: <%= fruitsDetail.fruit.genus %>
+    </p>
+
+    <h2>Nutrition Facts</h2>
+    <p>Calories: <%= fruitsDetail.nutrition.calories %>
+    </p>
+    <p>Sugar: <%= fruitsDetail.nutrition.sugar %>g</p>
+    <p>Fat: <%= fruitsDetail.nutrition.fat %>g</p>
+    <p>Fat: <%= fruitsDetail.nutrition.carbohydrates %>g</p>
+    <p>Fat: <%= fruitsDetail.nutrition.protein %>g</p>
+
+    <a href="/">Back to Gallery</a>
+  </div>
+  <!-- Add more nutrition fruitsDetail as needed -->
+</body>
+
+</html>

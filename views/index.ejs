@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits Gallery</title>
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/header.css">
+</head>
+<body>
+  <div class="container">
+    <%- include('partials/header') %>
+
+    <div class="fruit-grid">
+      <% fruits.forEach(fruit => { %>
+        <div class="fruit-card">
+          <a href="/fruits/<%= fruit.name %>">
+            <img src="<%= fruit.f_imgs %>" alt="<%= fruit.name %>">
+            <h2><%= fruit.name %></h2>
+          </a>
+        </div>
+      <% }) %>
+    </div>
+
+    <div class="family">
+
+    </div>
+  </div>
+</body>
+</html>

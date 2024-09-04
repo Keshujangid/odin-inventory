@@ -1,0 +1,39 @@
+/* Add this CSS to your app.css or another linked CSS file */
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Container for each family item */
+div.family {
+    margin-bottom: 15px;
+}
+
+/* Styling for the family links */
+div a.familyName {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect for the links */
+div a.familyName:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Active or focused state for accessibility */
+div a.familyName:active, div a.familyName:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4CAF50;
+}

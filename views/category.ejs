@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/category.css">
+    <link rel="stylesheet" href="/header.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <% data.forEach(family => { %>
+    <div class="family">
+        <a class="familyName" href="/family/<%= family.family %>"><%= family.family %></a>
+    </div>
+    <% }); %>
+</body>
+</html>
