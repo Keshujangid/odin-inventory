@@ -141,5 +141,5 @@ async function update() {
 
 
 
-await populateDb();
-await update();
+populateDb();
+update();
