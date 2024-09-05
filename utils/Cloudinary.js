@@ -18,7 +18,6 @@ async function cloudUpload(filePath) {
                 resource_type : "image"
             }
         )
-        // console.log('upload result' , uploadResult.url)
         return uploadResult
     } catch (error) {
         fs.unlink(filePath);
