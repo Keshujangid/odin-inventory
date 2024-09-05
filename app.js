@@ -5,7 +5,7 @@ const express = require("express")
 const app = express();
 const usersRouter = require("./routes/router")
 // const multer = require('multer')
-const port = 3000
+const port = process.env.PORT || 3000
 
 
 
