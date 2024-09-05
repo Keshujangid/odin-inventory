@@ -140,6 +140,12 @@ async function update() {
 }
 
 
+(async () => {
+    try {
+        await populateDb(); // Ensure the database is populated first
+        await update(); // Then update the database with images
+    } catch (error) {
+        console.error('Error:', error);
+    }
+})();
 
-populateDb();
-update();
